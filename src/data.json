@@ -1,8 +1,18 @@
 {
   "users": [
     {
-      "name": "mpawlak.it@gmail.com",
-      "password": "s12345"
+      "id":1,
+      "email": "mpawlak.it@gmail.com",
+      "password": "Qaz12345!",
+      "name":"Michał Pawlak",
+      "studentCardNumber":12345678
+    },
+    {
+      "id":2,
+      "email": "mpawlak@gmail.com",
+      "password": "Qwerty1!",
+      "name":"Julia Kowalska",
+      "studentCardNumber":87654321
     }
   ],
   "schedule": [
