@@ -1,0 +1,12 @@
+<ion-card (click)="openArticle(classes)">
+  <div class="square" [ngClass]="{online: classes.place === 'online'}"></div>
+  <div><ion-card-header>
+      <ion-card-subtitle>{{classes.startTime}} - {{classes.endTime}} {{classes.place}}</ion-card-subtitle>
+      <ion-card-title>{{classes.title}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{classes.lecturer}}
+    </ion-card-content>
+  </div>
+</ion-card>

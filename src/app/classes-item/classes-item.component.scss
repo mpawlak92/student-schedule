@@ -1,0 +1,26 @@
+ion-card {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+ion-datetime {
+  .calendar-day {
+    display: none;
+  }
+}
+ion-card-header {
+  padding-bottom: 5px;
+}
+
+ion-card-title {
+  font-size: 1rem;
+}
+
+.square {
+  width: 12px;
+  min-height: 100%;
+  background-color: var(--on-site-classes);
+}
+.online {
+  background-color: var(--online-classes);
+}
