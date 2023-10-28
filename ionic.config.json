@@ -1,0 +1,7 @@
+{
+  "name": "student-schedule",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
