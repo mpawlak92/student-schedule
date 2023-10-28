@@ -1,9 +1,10 @@
 <ion-header>
   <div class="datapicker-container">
-    <div class="datepicker-header" (click)="backToCurrentDate()">
+    <div class="datepicker-header">
       <h3>{{currentMonth }}</h3>
+      <ion-icon *ngIf="currentDate!=selectedDate" (click)=" backToCurrentDate()" name="caret-back-circle"></ion-icon>
     </div>
-    <div class="scroll-container" #container (scroll)="onScroll($event)">
+    <div class=" scroll-container" #container (scroll)="onScroll($event)">
       <div [ngClass]="{'active': day === selectedDate}" class=" day" *ngFor="let day of days"
         [class.current]="day === currentDate" (click)="selectDate(day)" [attr.data-date]="day">
         <div class="day__name">{{getDayName(day)}}</div>
