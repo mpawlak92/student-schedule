@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'article-modal',
     loadChildren: () => import('./article-modal/article-modal.module').then( m => m.ArticleModalPageModule)
   },
+  {
+    path: 'classes-modal',
+    loadChildren: () => import('./classes-modal/classes-modal.module').then( m => m.ClassesModalPageModule)
+  },
   
   
 ];
