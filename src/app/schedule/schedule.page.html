@@ -1,13 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>schedule</ion-title>
-  </ion-toolbar>
+<ion-header>
+  <div class="datapicker-container">
+    <div class="datepicker-header" (click)="backToCurrentDate()">
+      <h3>{{currentMonth }}</h3>
+    </div>
+    <div class="scroll-container" #container (scroll)="onScroll($event)">
+      <div [ngClass]="{'active': day === selectedDate}" class=" day" *ngFor="let day of days"
+        [class.current]="day === currentDate" (click)="selectDate(day)" [attr.data-date]="day">
+        <div class="day__name">{{getDayName(day)}}</div>
+        <div class="day__number">{{formatDay(day)}}</div>
+      </div>
+    </div>
+  </div>
 </ion-header>
+<ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">schedule</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <app-classes-item *ngFor="let class of classesBySelectedDate" [classes]="class"> </app-classes-item>
+  <div class="no-content-info" *ngIf="classesBySelectedDate === null">
+    <p>Brak zaplanowanych zajęć na dzień {{selectedDate}}.</p>
+  </div>
 </ion-content>

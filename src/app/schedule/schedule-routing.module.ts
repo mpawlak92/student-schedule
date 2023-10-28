@@ -3,11 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SchedulePage } from './schedule.page';
 
+
 const routes: Routes = [
   {
     path: '',
-    component: SchedulePage
-  }
+    component: SchedulePage,
+  },
 ];
 
 @NgModule({
