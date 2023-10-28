@@ -1,0 +1,20 @@
+<div class="articles">
+  <div class="category">
+    <button class="category__item" [ngClass]="{active: chosenCategory === category}"
+      *ngFor="let category of articlesCategory" (click)="slectCategory($event)">{{category}}</button>
+  </div>
+  <div class="articles__content">
+    <ion-card class="card" style="background-image: url({{element.img}});"
+      *ngFor="let element of articlesInChoosenCategory" (click)="openArticle(element)">
+      <div class="overlay"></div>
+      <ion-card-header>
+        <ion-card-title>{{element.heading}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+    <div class="no-content-in-category" *ngIf="articlesInChoosenCategory === null">
+      <p>Aktualnie w tej kategorii nie ma
+        żadnego artykułu. Zapraszamy w niedalekiej
+        przyszłości.</p>
+    </div>
+  </div>
+</div>
