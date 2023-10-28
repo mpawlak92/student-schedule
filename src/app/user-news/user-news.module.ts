@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { UserNewsPageRoutingModule } from './user-news-routing.module';
 
 import { UserNewsPage } from './user-news.page';
+import { NewsPagePageModule } from '../news-page/news-page.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserNewsPageRoutingModule
+    UserNewsPageRoutingModule,
+    NewsPagePageModule
   ],
   declarations: [UserNewsPage]
 })

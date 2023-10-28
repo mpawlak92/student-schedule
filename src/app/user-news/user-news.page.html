@@ -1,13 +1,48 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>user-news</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="avatar">
+    <ion-icon class="avatar__btn" name="person-circle-outline" (click)="setOpen(true)"></ion-icon>
+    <ion-modal [isOpen]="isModalOpen">
+        <ng-template>
+            <div style="height: 100%;">
+                <div class="modal-header">
+                    <div class="close-btn-container">
+                        <ion-buttons slot="end">
+                            <ion-button color="primary" (click)="setOpen(false)">Zamknij</ion-button>
+                        </ion-buttons>
+                    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">user-news</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+                    <div class="modal-avatar">
+                        <img class="avatar-img" src="../../assets/avatar.jpeg" alt="">
+
+                    </div>
+                    <div class="user-info">
+                        <h2 class="user-info__text user-info__name">Julia Kowalska</h2>
+                        <p class="user-info__text">julia.kowawlska057@cdv.com.pl</p>
+                    </div>
+                </div>
+                <div class="modal-content ion-padding">
+                    <ion-list>
+                        <ion-item-group>
+                            <ion-item button lines="full">
+                                <ion-label>
+                                    <h3>Edycja profilu</h3>
+                                </ion-label>
+                                <ion-icon color="primary" name="chevron-forward" end></ion-icon>
+                            </ion-item>
+                            <ion-item button lines="full">
+                                <ion-label>
+                                    <h3>Legitymacja studencka</h3>
+                                </ion-label>
+                                <ion-icon color="primary" name="chevron-forward" end></ion-icon>
+                            </ion-item>
+                        </ion-item-group>
+                    </ion-list>
+                    <div class="logout-btn">
+                        <ion-button (click)="logout()">Wyloguj</ion-button>
+                    </div>
+                </div>
+
+            </div>
+        </ng-template>
+    </ion-modal>
+</div>
+<app-news-page></app-news-page>
