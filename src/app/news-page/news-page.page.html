@@ -1,0 +1,11 @@
+<ion-content [fullscreen]="true">
+  <app-articles-slider></app-articles-slider>
+
+  <div class="news">
+    <div class="news__heading">
+      <h1>Aktualności</h1>
+    </div>
+    <app-news-card *ngFor="let news of newsData" [element]="news"></app-news-card>
+  </div>
+
+</ion-content>
