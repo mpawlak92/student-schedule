@@ -1,0 +1,20 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <ion-button fill="clear" (click)="close()">
+    </ion-button>
+
+  </div>
+  <div class="article-img" style="background-image: url({{article.img}});">
+    <h1 class="article-img__heading">{{article.heading}}</h1>
+    <div class="article-img__overlay"></div>
+  </div>
+  <div class="article-content">
+    <div class="article-publish-date"><ion-icon name="calendar-outline"></ion-icon> {{article.publishDate}}</div>
+    <div class="article-heading">
+      <h3>{{article.heading}}</h3>
+    </div>
+    <div class="article-text">
+      <p>{{article.content}}</p>
+    </div>
+  </div>
+</ion-content>
