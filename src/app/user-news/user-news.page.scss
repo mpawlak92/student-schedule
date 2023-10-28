@@ -22,6 +22,12 @@ ion-item::part(detail-icon) {
   opacity: 1;
   font-size: 20px;
 }
+.modal-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
 .modal-header {
   width: 100%;
   padding-bottom: 10px;
@@ -77,10 +83,6 @@ ion-item::part(detail-icon) {
   justify-content: space-between;
 }
 .logout-btn {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding-bottom: 20px;
-  display: flex;
-  justify-content: center;
+  align-self: center;
+  width: 60%;
 }
