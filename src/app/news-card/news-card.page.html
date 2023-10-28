@@ -1,0 +1,9 @@
+<ion-card class="news-card" (click)="openArticle(news)">
+
+  <div class="news-card__img" style="background-image: url({{news.img}});">
+  </div>
+  <ion-card-header>
+    <ion-card-title>{{news.heading}}</ion-card-title>
+    <ion-card-subtitle>{{news.publishDate}}</ion-card-subtitle>
+  </ion-card-header>
+</ion-card>

@@ -1,0 +1,26 @@
+.news-card {
+  display: flex;
+  flex-direction: row;
+  min-height: 100px;
+  margin-top: 10px;
+
+  &__img {
+    width: 100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+  }
+  ion-card-header {
+    display: flex;
+    justify-content: center;
+  }
+  ion-card-title {
+    font-size: 1rem;
+  }
+}
+
+ion-card {
+  width: 100%;
+  margin: 0 0;
+}
