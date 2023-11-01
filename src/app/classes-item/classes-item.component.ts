@@ -11,7 +11,7 @@ export class ClassesItemComponent implements OnInit {
   @Input() classes: any | classesType;
   constructor(private modalCtrl: ModalController) {}
 
-  openArticle(classesData: classesType) {
+  openDetails(classesData: classesType) {
     this.modalCtrl
       .create({
         component: ClassesModalPage,

@@ -19,28 +19,28 @@
       <ion-item>
         <h6>{{classes.lecturer}}</h6>
       </ion-item>
-      <ion-item lines="none">
+      <ion-item *ngIf="classes.place!='online'" lines="none">
         <h6>{{classes.place}}</h6>
       </ion-item>
     </ion-item-group>
 
     <ion-item-group>
-      <ion-item button lines="full">
-        <ion-icon name="star" slot="start"></ion-icon>
+      <ion-item *ngIf="classes.place=='online'" button lines="full">
+        <ion-icon name="logo-google" slot="start"></ion-icon>
         <ion-label>
           <h3>Dołącz w Google Meet</h3>
         </ion-label>
         <ion-icon color="primary" name="chevron-forward" end></ion-icon>
       </ion-item>
-      <ion-item button lines="full" n>
-        <ion-icon name="star" slot="start"></ion-icon>
+      <ion-item button lines="full" (click)="openMessageModal({name:classes.lecturer})">
+        <ion-icon name="mail" slot="start"></ion-icon>
         <ion-label>
           <h3>Wiadomość do wykładowcy</h3>
         </ion-label>
         <ion-icon color="primary" name="chevron-forward" end></ion-icon>
       </ion-item>
 
-      <ion-item button lines="full">
+      <ion-item button lines="full" (click)="openClassElevationModal(classes)">
         <ion-icon name="star" slot="start"></ion-icon>
         <ion-label>
           <h3>Oceń zajęcia</h3>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
+import { MessageModalComponent } from './message-modal/message-modal.component';
+import { classesType } from '../helpers/interfaces';
+import { ClassEvaluationModalComponent } from './class-evaluation-modal/class-evaluation-modal.component';
 
 @Component({
   selector: 'app-classes-modal',
@@ -19,5 +22,26 @@ export class ClassesModalPage implements OnInit {
 
   close() {
     this.modalCtrl.dismiss();
+  }
+
+  openMessageModal(lecturer:{name:string}) {
+    this.modalCtrl
+      .create({
+        component: MessageModalComponent,
+        componentProps:lecturer,
+      })
+      .then((modalres) => {
+        modalres.present();
+      });
+  }
+  openClassElevationModal(classes:classesType) {
+    this.modalCtrl
+      .create({
+        component: ClassEvaluationModalComponent,
+        componentProps:classes,
+      })
+      .then((modalres) => {
+        modalres.present();
+      });
   }
 }
