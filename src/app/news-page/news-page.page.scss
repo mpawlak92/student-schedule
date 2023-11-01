@@ -23,6 +23,8 @@
     }
   }
 
+  
+
   @media (min-height: 700px) {
     top: 45vh;
   }
@@ -30,3 +32,15 @@
     top: 40vh;
   }
 }
+.news_loading_container  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    .news_loading_message{
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }

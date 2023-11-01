@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+
 import { articleType } from '../helpers/interfaces';
-import data from '../../data.json';
+import { NewsService } from './news.service';
 
 @Component({
   selector: 'app-news-page',
@@ -8,8 +9,25 @@ import data from '../../data.json';
   styleUrls: ['./news-page.page.scss'],
 })
 export class NewsPagePage {
-    newsData: articleType[] = data.news;
-  constructor() { }
+
+    newsData?: articleType[];
+
+  constructor(private newsService: NewsService) { 
+
+    
+      this.getNews()
+    
+
+  }
+
+  getNews()
+  {
+    this.newsService.getAllNews().subscribe(
+      (result) => {
+        this.newsData = result
+      }
+    );
+  }
 
   
 

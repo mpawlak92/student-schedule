@@ -1,11 +1,16 @@
 <ion-content [fullscreen]="true">
-  <app-articles-slider></app-articles-slider>
+  <app-articles-slider *ngIf="this.newsData"></app-articles-slider>
 
-  <div class="news">
+  <div class="news" *ngIf="this.newsData else loading">
     <div class="news__heading">
       <h1>Aktualności</h1>
     </div>
-    <app-news-card *ngFor="let news of newsData" [element]="news"></app-news-card>
+    <app-news-card *ngFor="let news of this.newsData" [element]="news"></app-news-card>
   </div>
 
+  <ng-template #loading>
+    <div class="news_loading_container">
+      <p class="news_loading_message">Trwa ładowanie artykółów. Proszę czekać.</p>
+    </div>
+  </ng-template>
 </ion-content>
