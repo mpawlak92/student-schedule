@@ -10,7 +10,7 @@ import { NewsService } from './news.service';
 })
 export class NewsPagePage {
 
-    newsData?: articleType[];
+    newsData: articleType[] | undefined;
 
   constructor(private newsService: NewsService) { 
 

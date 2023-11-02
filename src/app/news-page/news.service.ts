@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http'
-import { articleType } from '../helpers/interfaces';
 import { Observable,map,of } from 'rxjs';
+
+import { articleType } from '../helpers/interfaces';
+import { articleDTO } from '../helpers/interfacesDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class NewsService {
   constructor(private http:HttpClient) { 
 
   }
-  private convertToArticle(article:articleType):articleType{
+  private convertToArticle(article:articleDTO):articleType{
     return{
         id: article.id,
         category: article.category,
@@ -23,8 +25,8 @@ export class NewsService {
         writer: article.writer,
     }
   }
-  getAllNews():Observable<articleType[]>{
-    return this.http.get<articleType[]>(environment.API_URL + '/news').pipe(
+  getAllNews():Observable<articleDTO[]>{
+    return this.http.get<articleDTO[]>(environment.API_URL + '/news').pipe(
       map(articles => articles.map(
         article => {
         return this.convertToArticle(article)
