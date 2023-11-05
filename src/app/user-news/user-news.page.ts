@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import data from '../../data.json';
 import { articleType } from '../helpers/interfaces';
 import { ModalController } from '@ionic/angular';
@@ -19,7 +18,7 @@ export class UserNewsPage implements OnInit,OnDestroy {
   isAuthenticated = false 
   private userSub :Subscription | undefined  
   
-  constructor(private router: Router, private modalCtrl:ModalController, private authService: AuthService ) {}
+  constructor( private modalCtrl:ModalController, private authService: AuthService ) {}
   
   ngOnInit(){
     this.userSub = this.authService.user$.subscribe(user=>{
@@ -59,7 +58,7 @@ export class UserNewsPage implements OnInit,OnDestroy {
 
     setTimeout(()=>{
       this.authService.logout()
-      this.router.navigate(['/start/sign-in'])
+      
   },1)
     
     
