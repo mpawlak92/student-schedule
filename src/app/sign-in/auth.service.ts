@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   
+  private tokenExpirationTime: any = null
+  
   subscribe() {
       throw new Error("Method not implemented.");
   }
@@ -35,6 +37,7 @@ export class AuthService {
         expirationDate
         )
         this.user.next(user)
+        this.autoLogout(+resData.expiresIn *10000)
         localStorage.setItem('userData', JSON.stringify(user))
         
     })
@@ -45,13 +48,25 @@ export class AuthService {
     if(!userData) {
       return
     }else{
-      const userDatObj:{email: string, id: string, _token: string, _tokenExpirationDate: Date} = JSON.parse(userData)
+      const userDatObj:{
+        email: string,
+        id: string,
+        _token: string,
+        _tokenExpirationDate: Date} = JSON.parse(userData)
 
-      const loadedUser = new User(userDatObj.email, userDatObj.id, userDatObj._token, new Date(userDatObj._tokenExpirationDate))
+      const loadedUser = new User(
+        userDatObj.email,
+        userDatObj.id,
+        userDatObj._token,
+        new Date(userDatObj._tokenExpirationDate)
+        )
 
       if(loadedUser.token !== 'token is out of time'){
         this.user.next(loadedUser)
-      }      
+        const expirationDate = new Date(userDatObj._tokenExpirationDate).getTime() - new Date().getTime()
+        this.autoLogout(expirationDate)
+      }
+      this.tokenExpirationTime = null      
     }
   }
 
@@ -59,5 +74,14 @@ export class AuthService {
     this.user.next(null)
     localStorage.removeItem('userData')
     this.router.navigate(['/start/sign-in'])
+    if(this.tokenExpirationTime){
+      clearTimeout(this.tokenExpirationTime)
+    }
+
+  }
+  autoLogout(expirationDuration:number){
+   this.tokenExpirationTime = setTimeout(()=>{
+      this.logout()
+    },expirationDuration)
   }
 }
