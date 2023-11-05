@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { articleType } from '../helpers/interfaces';
 import { NewsService } from './news.service';
+
+
 
 @Component({
   selector: 'app-news-page',
@@ -12,13 +14,11 @@ export class NewsPagePage {
 
     newsData: articleType[] | undefined;
 
+    
   constructor(private newsService: NewsService) { 
-
-    
       this.getNews()
-    
-
   }
+  
 
   getNews()
   {

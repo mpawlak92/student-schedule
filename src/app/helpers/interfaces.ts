@@ -8,6 +8,22 @@ export interface articleType {
   writer: string;
 }
 
+export interface classesType {
+  startTime: string;
+  endTime: string;
+  title: string;
+  lecturer: string;
+  place: string;
+}
+
+export interface userType {
+  id:number,
+  password: string,
+  email: string,
+  studentCardNumber:number
+  name:string,
+}
+
 export interface scheduleType {
   date: string;
   classes: {
@@ -17,12 +33,4 @@ export interface scheduleType {
     lecturer: string;
     place: string;
   }[];
-}
-
-export interface classesType {
-  startTime: string;
-  endTime: string;
-  title: string;
-  lecturer: string;
-  place: string;
 }

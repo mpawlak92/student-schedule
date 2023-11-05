@@ -7,3 +7,10 @@ export interface articleDTO {
   publishDate: string;
   writer: string;
 }
+export interface userDTO {
+  id:number,
+  password: string,
+  email: string,
+  studentCardNumber:number
+  name:string,
+}

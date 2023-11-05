@@ -2,33 +2,38 @@
   <div class="flex-container">
     <img class="logo" src="./assets/logo.svg" alt="Logo: Collegium Da Vinci - uczelnia ludzi ciekawych">
 
-    <ion-list class="login-container">
+    <form #loginForm="ngForm" class="form-container" (ngSubmit)="onSubmit(loginForm)" *ngIf="!isLoading">
+      <ion-list class="login-container">
 
-      <ion-item class="login-container__item">
-        <ion-label position="floating"> <ion-icon style="position: relative; top:2px;" aria-hidden="true"
-            name="mail-sharp"></ion-icon> Email:</ion-label>
-        <ion-input caret-color="primary" placeholder="Wprowadź email" [(ngModel)]="emailValue"></ion-input>
+        <ion-item class="login-container__item">
+          <ion-label position="floating"> <ion-icon style="position: relative; top:2px;" aria-hidden="true"
+              name="mail-sharp" for="email"></ion-icon> Email:</ion-label>
+          <ion-input caret-color="primary" placeholder="Wprowadź email" id="email" type="email" ngModel name="email"
+            required email></ion-input>
 
-      </ion-item>
+        </ion-item>
 
-      <ion-item class="login-container__item">
-        <ion-label position="floating"> <ion-icon aria-hidden="true" name="lock-closed-sharp"></ion-icon>
-          Hasło:</ion-label>
-        <ion-input placeholder="Wprowadź hasło" [(ngModel)]="passwordValue"></ion-input>
-      </ion-item>
+        <ion-item class="login-container__item">
+          <ion-label position="floating"> <ion-icon aria-hidden="true" name="lock-closed-sharp"
+              for="password"></ion-icon>
+            Hasło:</ion-label>
+          <ion-input placeholder="Wprowadź hasło" id="password" type="password" ngModel name="password"
+            required></ion-input>
+        </ion-item>
 
-      <ion-item class="login-container__item password-restore">
-        <ion-icon aria-hidden="true" name="help-circle-sharp"></ion-icon>
-        <a href="https://zaloguj.cdv.pl/reset-password"> Odzyskiwanie hasła</a>
-      </ion-item>
+        <ion-item class="login-container__item password-restore">
+          <ion-icon aria-hidden="true" name="help-circle-sharp"></ion-icon>
+          <a href="https://zaloguj.cdv.pl/reset-password"> Odzyskiwanie hasła</a>
+        </ion-item>
 
-    </ion-list>
-    <div class="errors-message" *ngIf="emailValidationResult !== '' || passwordValidationResult !== ''">
-      {{emailValidationResult}}
-      {{passwordValidationResult}}
-    </div>
+      </ion-list>
+      <div class="errors-message" *ngIf="errorMessage != ''">
+        {{errorMessage}}
+      </div>
 
-    <ion-button fill=" outline" [disabled]="emailValue === '' || passwordValue === '' " (click)="login()">
-      Zaloguj</ion-button>
+      <ion-button fill="outline" type="submit">
+        Zaloguj</ion-button>
+    </form>
+    <app-loading-spiner *ngIf="isLoading"></app-loading-spiner>
   </div>
 </ion-content>

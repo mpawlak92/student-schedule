@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,67 +9,47 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.page.scss'],
 })
 export class SignInPage  {
-emailValue = '';
-  passwordValue = '';
-  emailValidationResult = '';
-  passwordValidationResult = '';
+  isLoading = false
 
-  loginBtn = true;
-  constructor(public router: Router) {}
+  errorMessage: string = ''
 
-  validateEmail(email: string): string | null {
-    // You can use a regular expression to validate the email format
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  constructor(public router: Router, private authService:AuthService) {}
 
-    if (!emailPattern.test(email)) {
-      return 'Invalid email format';
+  onSubmit(form:NgForm){
+    
+    this.isLoading = true
+    this.errorMessage = ''
+
+    if(form.valid === false) {
+      this.isLoading = false
+      this.errorMessage = 'Niepoprawne dane logowania'
+      
+    }else{
+
+      this.authService.logIn(form.value.email, form.value.password).subscribe(resData =>{
+        console.log(resData)
+        this.isLoading = false
+        this.router.navigate(['/home'])
+        
+      },errorMrssage =>{
+        this.isLoading = false
+
+        if(errorMrssage.error.error.message ==='USER_DISABLED'){
+          this.errorMessage = 'Użytkownik wyłączony przez administratora'
+        } else {
+          this.errorMessage = 'Niepoprawne dane logowania'
+        }
+        
+        
+      })
+
+     
+
     }
 
-    return null; // Email is valid
   }
 
-  validatePassword(password: string): string | null {
-    // Password must be at least 6 characters long
-    if (password.length < 6) {
-      return 'Password must be at least 6 characters long';
-    }
 
-    // Password must contain at least one special character
-    const specialCharacterPattern = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
-    if (!specialCharacterPattern.test(password)) {
-      return 'Password must contain at least one special character';
-    }
+  
 
-    // Password must contain at least one capital letter
-    const capitalLetterPattern = /[A-Z]/;
-    if (!capitalLetterPattern.test(password)) {
-      return 'Password must contain at least one capital letter';
-    }
-
-    return null; // Password is valid
-  }
-  login() {
-    this.emailValidationResult = '';
-    this.passwordValidationResult = '';
-    const emailValidationResult = this.validateEmail(this.emailValue);
-    const passwordValidationResult = this.validatePassword(this.passwordValue);
-
-    if (emailValidationResult) {
-      this.emailValidationResult = emailValidationResult;
-      this.passwordValue = '';
-    } else if (passwordValidationResult) {
-      this.passwordValidationResult = passwordValidationResult;
-      this.passwordValue = '';
-    } else {
-      this.emailValidationResult = '';
-      this.passwordValidationResult = '';
-      this.inputsClear();
-      this.router.navigateByUrl('home');
-    }
-    this.router.navigateByUrl('home'); //for development
-  }
-  inputsClear() {
-    this.emailValue = '';
-    this.passwordValue = '';
-  }
 }

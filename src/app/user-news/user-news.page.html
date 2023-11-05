@@ -1,4 +1,4 @@
-<div class="avatar">
+<div class="avatar" *ngIf="isAuthenticated">
     <ion-icon class="avatar__btn" name="person-circle-outline" (click)="setOpen(true)"></ion-icon>
     <ion-modal [isOpen]="isModalOpen">
         <ng-template>
@@ -44,4 +44,5 @@
         </ng-template>
     </ion-modal>
 </div>
-<app-news-page></app-news-page>
+<div *ngIf="!isAuthenticated">Zaloguj się ponownie aby skorzystać z aplikacji</div>
+<app-news-page *ngIf="isAuthenticated"></app-news-page>

@@ -10,6 +10,7 @@ import { NewsPagePage } from './news-page.page';
 import { NewsCardPageModule } from '../news-card/news-card.module';
 import { ArticlesSliderPageModule } from '../articles-slider/articles-slider.module';
 import { NewsService } from './news.service';
+import { LoadingSpinerComponent } from '../loading-spiner/loading-spiner.component';
 
 
 
@@ -20,7 +21,8 @@ import { NewsService } from './news.service';
     IonicModule,
     NewsPagePageRoutingModule,
     NewsCardPageModule,
-    ArticlesSliderPageModule
+    ArticlesSliderPageModule,
+    LoadingSpinerComponent
   ],
   declarations: [NewsPagePage,],
   providers:[NewsService],
