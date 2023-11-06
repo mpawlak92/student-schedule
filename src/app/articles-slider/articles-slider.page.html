@@ -1,6 +1,6 @@
 <div class="articles">
-  <div class="category">
-    <button class="category__item" [ngClass]="{active: chosenCategory === category}"
+  <div class="category" [ngStyle]="isAuthenticated?{'padding-right':'40px'}: null">
+    <button class=" category__item" [ngClass]="{active: chosenCategory === category}"
       *ngFor="let category of articlesCategory" (click)="slectCategory($event)">{{category}}</button>
   </div>
   <div class="articles__content">

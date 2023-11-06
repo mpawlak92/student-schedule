@@ -1,32 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { ArticleModalPage } from '../article-modal/article-modal.page';
 import { articleType } from '../interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 import { ArticlesSliderService } from './articles-slider.service';
+import { AuthService } from '../sign-in/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-articles-slider',
   templateUrl: './articles-slider.page.html',
   styleUrls: ['./articles-slider.page.scss'],
 })
-export class ArticlesSliderPage implements OnInit{
+export class ArticlesSliderPage implements OnInit,OnDestroy{
   articlesCategory: string[] | undefined;
   articles: articleType[] | undefined;
 
   articlesInChoosenCategory: articleType[] | undefined
   chosenCategory: string | undefined
 
-  isDataLoading =false
+  isAuthenticated = false
+  userSub:Subscription | undefined
 
-  noArticlesOrCategorys = false
-  constructor(private modalCtrl: ModalController, private sliderService: ArticlesSliderService) {    
-   
-  }
-
-  ngOnInit(): void {
+  constructor(private modalCtrl: ModalController, private sliderService: ArticlesSliderService, private authService:AuthService) {    
     this.getArticles()
     this.getArticlesCategory()
+  }
+ 
+
+   ngOnInit(){
+    this.userSub = this.authService.user$.subscribe(user=>{
+      this.isAuthenticated = !!user;
+    });
   }
   
   getArticlesCategory(){
@@ -81,5 +86,9 @@ export class ArticlesSliderPage implements OnInit{
       .then((modalres) => {
         modalres.present();
       });
+  }
+
+   ngOnDestroy(): void {
+    if(this.userSub)  this.userSub.unsubscribe()
   }
 }
