@@ -60,11 +60,11 @@ export class AuthService {
         userDatObj._token,
         new Date(userDatObj._tokenExpirationDate)
         )
-
-      if(loadedUser.token !== 'token is out of time'){
-        this.user.next(loadedUser)
-        const expirationDate = new Date(userDatObj._tokenExpirationDate).getTime() - new Date().getTime()
-        this.autoLogout(expirationDate)
+        if(loadedUser.token !== 'token is out of time'){
+          this.user.next(loadedUser)
+          const expirationDate = new Date(userDatObj._tokenExpirationDate).getTime() - new Date().getTime()
+          this.autoLogout(expirationDate)
+          this.router.navigate(['/home'])
       }
       this.tokenExpirationTime = null      
     }
