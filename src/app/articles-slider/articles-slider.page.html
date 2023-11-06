@@ -11,7 +11,7 @@
         <ion-card-title>{{element.heading}}</ion-card-title>
       </ion-card-header>
     </ion-card>
-    <div class="no-content-in-category" *ngIf="articlesInChoosenCategory === null">
+    <div class="no-content-in-category" *ngIf="articlesInChoosenCategory === undefined">
       <p>Aktualnie w tej kategorii nie ma
         żadnego artykułu. Zapraszamy w niedalekiej
         przyszłości.</p>
