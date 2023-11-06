@@ -1,5 +1,5 @@
 import { Component,  Input } from '@angular/core';
-import { articleType } from '../helpers/interfaces';
+import { articleType } from '../interfaces/interfaces';
 
 import { ModalController } from '@ionic/angular';
 import { ArticleModalPage } from '../article-modal/article-modal.page';

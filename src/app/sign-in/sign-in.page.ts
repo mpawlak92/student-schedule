@@ -27,7 +27,7 @@ export class SignInPage  {
     }else{
 
       this.authService.logIn(form.value.email, form.value.password).subscribe(resData =>{
-        console.log(resData)
+        
         this.isLoading = false
         this.router.navigate(['/home'])
         

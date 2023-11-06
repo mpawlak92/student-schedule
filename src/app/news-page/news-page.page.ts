@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { articleType } from '../helpers/interfaces';
+import { articleType } from '../interfaces/interfaces';
 import { NewsService } from './news.service';
 
 

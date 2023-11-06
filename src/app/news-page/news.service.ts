@@ -3,8 +3,8 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { Observable,exhaustMap,map, take } from 'rxjs';
 
-import { articleType } from '../helpers/interfaces';
-import { articleDTO } from '../helpers/interfacesDTO';
+import { articleType } from '../interfaces/interfaces';
+import { articleDTO } from '../interfaces/interfacesDTO';
 import { AuthService } from '../sign-in/auth.service';
 
 @Injectable({

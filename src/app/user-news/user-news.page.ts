@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import data from '../../data.json';
-import { articleType } from '../helpers/interfaces';
+import { articleType } from '../interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 import { EditProfileModalComponent } from './edit-profile-modal/edit-profile-modal.component';
 import { StudentCardModalComponent } from './student-card-modal/student-card-modal.component';

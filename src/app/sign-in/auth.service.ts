@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, tap } from 'rxjs';
 
 
-import { AuthResponceData } from '../helpers/auth-interfaces';
+import { AuthResponceData } from '../interfaces/auth-interfaces';
 import { User } from './user.model';
 import { Router } from '@angular/router';
 

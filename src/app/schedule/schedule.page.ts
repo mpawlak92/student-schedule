@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import data from '../../data.json';
 import moment from 'moment';
-import { scheduleType } from '../helpers/interfaces';
+import { scheduleType } from '../interfaces/interfaces';
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.page.html',

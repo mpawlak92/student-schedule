@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { classesType } from '../helpers/interfaces';
+import { classesType } from '../interfaces/interfaces';
 import { ClassesModalPage } from '../classes-modal/classes-modal.page';
 @Component({
   selector: 'app-classes-item',

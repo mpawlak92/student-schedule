@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { MessageModalComponent } from './message-modal/message-modal.component';
-import { classesType } from '../helpers/interfaces';
+import { classesType } from '../interfaces/interfaces';
 import { ClassEvaluationModalComponent } from './class-evaluation-modal/class-evaluation-modal.component';
 
 @Component({

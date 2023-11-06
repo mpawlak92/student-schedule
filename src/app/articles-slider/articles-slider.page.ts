@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import data from '../../data.json';
 import { ArticleModalPage } from '../article-modal/article-modal.page';
-import { articleType } from '../helpers/interfaces';
+import { articleType } from '../interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 
 @Component({
