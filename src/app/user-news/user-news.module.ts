@@ -10,6 +10,7 @@ import { UserNewsPage } from './user-news.page';
 import { NewsPagePageModule } from '../news-page/news-page.module';
 import { StudentCardModalComponent } from './student-card-modal/student-card-modal.component';
 import { EditProfileModalComponent } from './edit-profile-modal/edit-profile-modal.component';
+import { UserProfileModalComponent } from './user-profile-modal/user-profile-modal.component';
 
 
 @NgModule({
@@ -20,6 +21,6 @@ import { EditProfileModalComponent } from './edit-profile-modal/edit-profile-mod
     UserNewsPageRoutingModule,
     NewsPagePageModule
   ],
-  declarations: [UserNewsPage, StudentCardModalComponent,EditProfileModalComponent]
+  declarations: [UserNewsPage, StudentCardModalComponent,EditProfileModalComponent, UserProfileModalComponent]
 })
 export class UserNewsPageModule {}

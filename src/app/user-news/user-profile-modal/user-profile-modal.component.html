@@ -1,0 +1,39 @@
+<div class="modal-container" style="height: 100%;">
+  <div>
+    <div class="modal-header">
+      <div class="close-btn-container">
+        <ion-buttons slot="end">
+          <ion-button color="primary" (click)="close()">Zamknij</ion-button>
+        </ion-buttons>
+      </div>
+
+      <div class="modal-avatar">
+        <img class="avatar-img" src="../../assets/avatar.jpeg" alt="">
+
+      </div>
+      <div class="user-info">
+        <h2 class="user-info__text user-info__name">{{userData?.name}}</h2>
+        <p class="user-info__text">{{userData?.email}}</p>
+      </div>
+    </div>
+    <div class="modal-content ion-padding">
+      <ion-list>
+        <ion-item-group>
+          <ion-item button lines="full" (click)="openEditProfileModal()">
+            <ion-label>
+              <h3>Edycja profilu</h3>
+            </ion-label>
+            <ion-icon color="primary" name="chevron-forward" end></ion-icon>
+          </ion-item>
+          <ion-item button lines="full" (click)="openStudentCardModal()">
+            <ion-label>
+              <h3>Legitymacja studencka</h3>
+            </ion-label>
+            <ion-icon color="primary" name="chevron-forward" end></ion-icon>
+          </ion-item>
+        </ion-item-group>
+      </ion-list>
+    </div>
+  </div>
+  <ion-button class="logout-btn" (click)="logout()">Wyloguj</ion-button>
+</div>

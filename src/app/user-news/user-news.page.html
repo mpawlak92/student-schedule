@@ -1,48 +1,6 @@
 <div class="avatar" *ngIf="isAuthenticated">
-    <ion-icon class="avatar__btn" name="person-circle-outline" (click)="setOpen(true)"></ion-icon>
-    <ion-modal [isOpen]="isModalOpen">
-        <ng-template>
-            <div class="modal-container" style="height: 100%;">
-                <div>
-                    <div class="modal-header">
-                        <div class="close-btn-container">
-                            <ion-buttons slot="end">
-                                <ion-button color="primary" (click)="setOpen(false)">Zamknij</ion-button>
-                            </ion-buttons>
-                        </div>
+    <ion-icon class="avatar__btn" name="person-circle-outline" (click)="openUserProfile()"></ion-icon>
 
-                        <div class="modal-avatar">
-                            <img class="avatar-img" src="../../assets/avatar.jpeg" alt="">
-
-                        </div>
-                        <div class="user-info">
-                            <h2 class="user-info__text user-info__name">Julia Kowalska</h2>
-                            <p class="user-info__text">julia.kowawlska057@cdv.com.pl</p>
-                        </div>
-                    </div>
-                    <div class="modal-content ion-padding">
-                        <ion-list>
-                            <ion-item-group>
-                                <ion-item button lines="full" (click)="openEditProfileModal({})">
-                                    <ion-label>
-                                        <h3>Edycja profilu</h3>
-                                    </ion-label>
-                                    <ion-icon color="primary" name="chevron-forward" end></ion-icon>
-                                </ion-item>
-                                <ion-item button lines="full" (click)="openStudentCardModal({id:12345678})">
-                                    <ion-label>
-                                        <h3>Legitymacja studencka</h3>
-                                    </ion-label>
-                                    <ion-icon color="primary" name="chevron-forward" end></ion-icon>
-                                </ion-item>
-                            </ion-item-group>
-                        </ion-list>
-                    </div>
-                </div>
-                <ion-button class="logout-btn" (click)="logout()">Wyloguj</ion-button>
-            </div>
-        </ng-template>
-    </ion-modal>
 </div>
 <div *ngIf="!isAuthenticated">Zaloguj się ponownie aby skorzystać z aplikacji</div>
 <app-news-page *ngIf="isAuthenticated"></app-news-page>

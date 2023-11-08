@@ -2,10 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import data from '../../data.json';
 import { articleType } from '../interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
-import { EditProfileModalComponent } from './edit-profile-modal/edit-profile-modal.component';
-import { StudentCardModalComponent } from './student-card-modal/student-card-modal.component';
 import { AuthService } from '../sign-in/auth.service';
 import { Subscription } from 'rxjs';
+import { UserProfileModalComponent } from './user-profile-modal/user-profile-modal.component';
 
 @Component({
   selector: 'app-user-news',
@@ -23,47 +22,20 @@ export class UserNewsPage implements OnInit,OnDestroy {
   ngOnInit(){
     this.userSub = this.authService.user$.subscribe(user=>{
       this.isAuthenticated = !!user;
-      
     });
    
   }
-
-  isModalOpen = false;
-
-  setOpen(isOpen: boolean) {
-    this.isModalOpen = isOpen;
-  }
-  openEditProfileModal(userData:{}) {
+  openUserProfile() {
     this.modalCtrl
       .create({
-        component: EditProfileModalComponent,
-        componentProps:userData,
+        component: UserProfileModalComponent,
       })
       .then((modalres) => {
         modalres.present();
       });
   }
-  openStudentCardModal(studentCardId:{id:number}) {
-    this.modalCtrl
-      .create({
-        component: StudentCardModalComponent,
-        componentProps:studentCardId,
-      })
-      .then((modalres) => {
-        modalres.present();
-      });
-  }
-  logout() {
-    this.setOpen(false)
 
-    setTimeout(()=>{
-      this.authService.logout()
-      
-  },1)
-    
-    
-    
-  }
+
   ngOnDestroy(): void {
     if(this.userSub)  this.userSub.unsubscribe()
   }

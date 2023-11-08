@@ -17,11 +17,10 @@ export interface classesType {
 }
 
 export interface userType {
-  id:number,
-  password: string,
-  email: string,
-  studentCardNumber:number
+  id:string,
   name:string,
+  email:string,
+  studentCardNumber:number
 }
 
 export interface scheduleType {

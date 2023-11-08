@@ -8,9 +8,8 @@ export interface articleDTO {
   writer: string;
 }
 export interface userDTO {
-  id:number,
-  password: string,
-  email: string,
-  studentCardNumber:number
+  id:string,
   name:string,
+  email:string,
+  studentCardNumber:number
 }
