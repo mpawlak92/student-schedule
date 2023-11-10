@@ -7,10 +7,14 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-
-
-
-
-
-
+  <form [formGroup]="questionnaireForm" (ngSubmit)="submitForm()" novalidate>
+    <div *ngFor="let question of questions; let i = index">
+      <h5>{{ question }}</h5>
+      <div class="star-rating">
+        <span *ngFor="let _ of stars; let j = index" (mouseover)="enter(i, j + 1)" (click)="rate(i, j + 1)">
+          {{ j < hoveredValue[i] ? '⭐' : '☆' }} </span>
+      </div>
+    </div>
+    <ion-button type="submit" [disabled]="!questionnaireForm.valid">Submit</ion-button>
+  </form>
 </ion-content>
