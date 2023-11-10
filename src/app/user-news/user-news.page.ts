@@ -1,6 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import data from '../../data.json';
-import { articleType } from '../interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 import { AuthService } from '../sign-in/auth.service';
 import { Subscription } from 'rxjs';
@@ -12,8 +10,7 @@ import { UserProfileModalComponent } from './user-profile-modal/user-profile-mod
   styleUrls: ['./user-news.page.scss'],
 })
 export class UserNewsPage implements OnInit,OnDestroy {
-  newsData: articleType[] = data.news;
-
+  
   isAuthenticated = false 
   private userSub :Subscription | undefined  
   
