@@ -42,7 +42,8 @@ export class SchedulePage implements OnInit, AfterViewInit {
   ngOnInit(): void {
 
     this.getData()  
-    this.findClassesSelectedByDate() 
+    
+    
   }
 
   getData() {
@@ -51,6 +52,7 @@ export class SchedulePage implements OnInit, AfterViewInit {
       result => {
         this.schedule = result;
         this.isLoading = false
+        this.findClassesSelectedByDate()
       }
     );
   }
