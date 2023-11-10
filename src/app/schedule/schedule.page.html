@@ -7,7 +7,7 @@
       </ion-button>
     </div>
     <div class=" scroll-container" #container (scroll)="onScroll($event)">
-      <div [ngClass]="{'active': day === selectedDate}" class=" day" *ngFor="let day of days"
+      <div [ngClass]="{'active': day === selectedDate, 'weekend': isWeekend(day)}" class=" day" *ngFor="let day of days"
         [class.current]="day === currentDate" (click)="selectDate(day)" [attr.data-date]="day">
         <div class="day__name">{{getDayName(day)}}</div>
         <div class="day__number">{{formatDay(day)}}</div>
@@ -15,10 +15,16 @@
     </div>
   </div>
 </ion-header>
-<ion-content>
+<ion-content *ngIf="isLoading === false">
 
   <app-classes-item *ngFor="let class of classesBySelectedDate" [classes]="class"> </app-classes-item>
   <div class="no-content-info" *ngIf="classesBySelectedDate === null">
-    <p>Brak zaplanowanych zajęć na dzień {{selectedDate}}.</p>
+    <p>Brak zaplanowanych zajęć na dzień: {{selectedDate}}.</p>
+  </div>
+</ion-content>
+<ion-content *ngIf="isLoading===true">
+  <div class="no-content-info">
+    <p>Dane są ładowne, proszę czekać.</p>
+    <app-loading-spiner></app-loading-spiner>
   </div>
 </ion-content>

@@ -25,11 +25,11 @@ export interface userType {
 
 export interface scheduleType {
   date: string;
-  classes: {
+  classes: [{
     startTime: string;
     endTime: string;
     title: string;
     lecturer: string;
     place: string;
-  }[];
+  }]
 }

@@ -13,3 +13,13 @@ export interface userDTO {
   email:string,
   studentCardNumber:number
 }
+export interface scheduleDTO {
+  date: string;
+  classes: [{
+    startTime: string;
+    endTime: string;
+    title: string;
+    lecturer: string;
+    place: string;
+  }]
+}

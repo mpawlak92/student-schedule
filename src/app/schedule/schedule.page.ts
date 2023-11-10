@@ -1,17 +1,18 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import data from '../../data.json';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+
 import moment from 'moment';
 import { scheduleType } from '../interfaces/interfaces';
+import { ScheduleService } from './schedule.service';
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.page.html',
   styleUrls: ['./schedule.page.scss'],
 })
-export class SchedulePage implements AfterViewInit {
-  schedule: scheduleType[] = data.schedule;
-
+export class SchedulePage implements OnInit, AfterViewInit {
+  schedule: scheduleType[] | undefined
+  isLoading = true
   classesBySelectedDate:
-    | {
+     {
         startTime: string;
         endTime: string;
         title: string;
@@ -27,11 +28,9 @@ export class SchedulePage implements AfterViewInit {
   selectedDate: string = '';
   currentMonth: string = moment().format('MMMM YYYY');
 
-  constructor() {
+  constructor( private scheduleService: ScheduleService) {
     moment.locale('pl');
     this.selectedDate = this.currentDate;
-    this.findClassesSelectedByDate();
-
     const startDate = new Date(2023, 0, 1); // January is 0
     const endDate = new Date(2023, 11, 31); // December is 11
 
@@ -40,7 +39,22 @@ export class SchedulePage implements AfterViewInit {
       startDate.setDate(startDate.getDate() + 1);
     }
   }
+  ngOnInit(): void {
 
+    this.getData()  
+    this.findClassesSelectedByDate() 
+  }
+
+  getData() {
+    this.isLoading = true;
+    this.scheduleService.getSchedule().subscribe(
+      result => {
+        this.schedule = result;
+        this.isLoading = false
+      }
+    );
+  }
+    
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.scrollToCurrentDate();
@@ -48,12 +62,23 @@ export class SchedulePage implements AfterViewInit {
   }
 
   findClassesSelectedByDate() {
-    const scheduleObjectByDate = this.schedule.filter(
+    let scheduleObjectByDate:scheduleType[]
+      
+    if(this.schedule){
+       scheduleObjectByDate = this.schedule.filter(
       (day) => day.date === this.selectedDate
+       
     );
+     
+  }else{
+      scheduleObjectByDate =[]
+    }
+    
     if (scheduleObjectByDate.length > 0) {
+       
       const classesByDate = scheduleObjectByDate[0].classes;
       if (classesByDate) {
+       
         this.classesBySelectedDate = classesByDate;
       }
     } else {
@@ -154,9 +179,16 @@ export class SchedulePage implements AfterViewInit {
     const momentDate = moment(date, 'DD-MM-YYYY');
     return momentDate.format('dd');
   }
+
+  isWeekend(date: string): boolean {
+  const momentDate = moment(date, 'DD-MM-YYYY');
+  const dayOfWeek = momentDate.day(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+  return dayOfWeek === 0 || dayOfWeek === 6; // Check if it's Sunday or Saturday
+}
   backToCurrentDate() {
     this.scrollToCurrentDate();
     this.selectedDate = this.currentDate;
     this.findClassesSelectedByDate();
   }
+
 }

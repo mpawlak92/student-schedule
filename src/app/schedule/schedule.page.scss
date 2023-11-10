@@ -18,8 +18,12 @@
   .back-to-curent-date-btn{
     position: absolute;
     right:0;
-    margin: 10px 15px 0 0;
+    margin-right: 10px;
     font-size: 0.8rem;
+    min-height: 5px;
+    height: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 
   }
 }
@@ -62,9 +66,13 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   padding: 10px;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-size: 1.3rem;
+}
+.weekend {
+  color: #007bff;  /* Set the desired color for weekends */
 }
