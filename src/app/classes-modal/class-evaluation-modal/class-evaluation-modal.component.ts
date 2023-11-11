@@ -37,15 +37,11 @@ questions = [
   this.questionnaireForm = this.fb.group({
     ratings: this.fb.array(formControls),
   });
-}
+  }
 
-ratingValidator(control: AbstractControl): ValidationErrors | null {
-  const value = control.value;
-  return value !== null && value !== 0 ? null : { 'required': true };
-}
-
-  enter(questionIndex: number, value: number): void {
-    this.hoveredValue[questionIndex] = value;
+  ratingValidator(control: AbstractControl): ValidationErrors | null {
+    const value = control.value;
+    return value !== null && value !== 0 ? null : { 'required': true };
   }
 
   rate(questionIndex: number, value: number): void {

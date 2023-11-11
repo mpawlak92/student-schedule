@@ -8,13 +8,14 @@
 </ion-header>
 <ion-content class="ion-padding">
   <form [formGroup]="questionnaireForm" (ngSubmit)="submitForm()" novalidate>
-    <div *ngFor="let question of questions; let i = index">
-      <h5>{{ question }}</h5>
+    <div *ngFor="let question of questions; let questionNumber = index">
+      <h5>{{questionNumber + 1}}. {{ question }}</h5>
       <div class="star-rating">
-        <span *ngFor="let _ of stars; let j = index" (mouseover)="enter(i, j + 1)" (click)="rate(i, j + 1)">
-          {{ j < hoveredValue[i] ? '⭐' : '☆' }} </span>
+        <ion-icon *ngFor="let _ of stars; let statNumber = index" (click)="rate(questionNumber, statNumber + 1)"
+          [name]="statNumber < hoveredValue[questionNumber] ? 'star' : 'star-outline'">
+        </ion-icon>
       </div>
     </div>
-    <ion-button type="submit" [disabled]="!questionnaireForm.valid">Submit</ion-button>
+    <ion-button type="submit" class="submit-btn" [disabled]="!questionnaireForm.valid">Wyślij</ion-button>
   </form>
 </ion-content>
