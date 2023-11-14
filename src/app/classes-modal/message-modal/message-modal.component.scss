@@ -1,0 +1,26 @@
+ .message-area {
+   border: 1px solid #ccc;
+   transition: border-color 0.3s;
+
+    &:focus{
+     outline-color: #007bff; /* Blue color */
+     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+    }
+    border-radius: 8px;
+    padding: 10px;
+    padding-top:0;
+    
+}
+.submit-button {
+  position: absolute;
+  right:15px;
+  margin-top: 15px;
+}
+
+ion-item {
+  --inner-padding-bottom: 0;
+  --inner-padding-end: 0;
+  --inner-padding-start: 0;
+  --inner-padding-top: 0;
+  
+}

@@ -8,8 +8,16 @@
 </ion-header>
 <ion-content class="ion-padding">
 
-  {{lecturer.name}}
+  <h6>Odbiorca: {{lecturer.lecturerName}}</h6>
 
+  <form [formGroup]="messageForm" (ngSubmit)="submitForm()">
+    <ion-item class="ion-no-padding" lines="none">
+      <ion-textarea formControlName="message" label="Twoja wiadomość" labelPlacement="floating" rows="8"
+        class="message-area"></ion-textarea>
+    </ion-item>
+    <ion-button type="submit" class="submit-button " [disabled]="!messageForm.valid">Wyślij
+      wiadomość</ion-button>
+  </form>
 
 
 

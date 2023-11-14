@@ -24,7 +24,7 @@ export class ClassesModalPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  openMessageModal(lecturer:{name:string}) {
+  openMessageModal(lecturer:{lecturerName:string}) {
     this.modalCtrl
       .create({
         component: MessageModalComponent,
