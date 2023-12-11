@@ -8,9 +8,19 @@
 </ion-header>
 <ion-content class="ion-padding">
 
+  <h3>Podaj nowe dane</h3>
 
-  edytuj sie
+  <form [formGroup]="editProfileForm" (ngSubmit)="submitForm()">
 
-
+    <ion-item>
+      <ion-input formControlName="email" type="email" label="Nowy email" labelPlacement="floating"
+        placeholder="Wprowadź nowy email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input formControlName="password" type="password" label="Nowe hasło" labelPlacement="floating"
+        placeholder="Wprowadź nowe hasło"></ion-input>
+    </ion-item>
+    <ion-button type="submit" [disabled]="!editProfileForm.valid">Zapisz zamiany</ion-button>
+  </form>
 
 </ion-content>

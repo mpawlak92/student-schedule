@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -19,7 +19,8 @@ import { UserProfileModalComponent } from './user-profile-modal/user-profile-mod
     FormsModule,
     IonicModule,
     UserNewsPageRoutingModule,
-    NewsPagePageModule
+    NewsPagePageModule,
+    ReactiveFormsModule
   ],
   declarations: [UserNewsPage, StudentCardModalComponent,EditProfileModalComponent, UserProfileModalComponent]
 })
