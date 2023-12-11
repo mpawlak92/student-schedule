@@ -38,12 +38,12 @@ export class SchedulePage implements OnInit, AfterViewInit {
       this.days.push(moment(startDate).format('DD-MM-YYYY'));
       startDate.setDate(startDate.getDate() + 1);
     }
+    setInterval(()=>{
+      this.getData()  
+    },600000)
   }
   ngOnInit(): void {
-
     this.getData()  
-    
-    
   }
 
   getData() {
@@ -138,6 +138,7 @@ export class SchedulePage implements OnInit, AfterViewInit {
     this.selectedDate = date;
     this.findClassesSelectedByDate();
     this.scrollToSelectedDate();
+    this.getData() 
   }
 
   onScroll(event: Event): void {
@@ -191,6 +192,7 @@ export class SchedulePage implements OnInit, AfterViewInit {
     this.scrollToCurrentDate();
     this.selectedDate = this.currentDate;
     this.findClassesSelectedByDate();
+    this.getData() 
   }
 
 }
